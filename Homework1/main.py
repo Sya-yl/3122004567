@@ -12,7 +12,7 @@ def file_read(path):  # 读取文件内容
         return FileNotFoundError
 
 
-def translate(text):  # 去除文本中的标点符号，并改成全部小写
+def translate(text):  # 改写为统一格式的文本
     text = text.translate(str.maketrans('', '', string.punctuation)).lower().replace(' ', '')
     return text
 
