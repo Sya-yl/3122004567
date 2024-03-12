@@ -25,8 +25,11 @@ def get_copy_percentage(ori_text, copy_text):
     # 计算匹配内容的长度
     matching_amount = sum(block.size for block in matching_blocks)
     # 计算查重率
-    copy_percentage = matching_amount / max(len(ori_text), len(copy_text))
-    return copy_percentage
+    if max(len(ori_text), len(copy_text)) != 0:
+        copy_percentage = matching_amount / max(len(ori_text), len(copy_text))
+        return copy_percentage
+
+    return -1
 
 
 def main():
@@ -44,6 +47,10 @@ def main():
     copy_text = translate(copy_text)
     # 计算查重率
     copy_percentage = get_copy_percentage(ori_text, copy_text)
+    if copy_percentage == -1:  # 异常标识-1
+        with open(output_path, 'a', encoding="utf_8") as output_file:
+            output_file.write("ERROR")
+        return
     # 写入输出文件
     with open(output_path, 'a', encoding="utf_8") as output_file:
         output_file.write(f"{copy_percentage:.2%}")

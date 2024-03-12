@@ -62,7 +62,7 @@ class TestPlagiarismDetection(unittest.TestCase):
         self.assertEqual(get_copy_percentage(translate(original_text), translate(copied_text)), 0)
 
     def test_empty_text2(self):
-        original_text = "This is a test."
+        original_text = ""
         copied_text = ""
         self.assertEqual(get_copy_percentage(translate(original_text), translate(copied_text)), 0)
 
