@@ -45,7 +45,7 @@ def main():
     # 计算查重率
     copy_percentage = get_copy_percentage(ori_text, copy_text)
     # 写入输出文件
-    with open(output_path, 'w', encoding="utf_8") as output_file:
+    with open(output_path, 'a', encoding="utf_8") as output_file:
         output_file.write(f"{copy_percentage:.2%}")
 
 
